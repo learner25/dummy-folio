@@ -32,15 +32,17 @@ const HeroSection = ({
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial call
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
-    <section className="relative h-[982px] w-full bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 flex items-center justify-center overflow-hidden">
+    <section className="relative h-[982px] w-full bg-gradient-to-b from-gray-50/95 to-white/95 dark:from-gray-900/95 dark:to-gray-800/95 flex items-center justify-center overflow-hidden">
       <ToonParticles scrollY={scrollY} />
       <div className="container mx-auto px-4 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.9, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="space-y-6"
@@ -114,7 +116,7 @@ const HeroSection = ({
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.93 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
