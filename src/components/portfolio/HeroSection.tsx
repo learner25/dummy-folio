@@ -16,7 +16,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({
-  title = "Hi, I'm John Doe",
+  title = "Hi, I'm Saimon",
   subtitle = "Full Stack Developer",
   description = "I build exceptional and accessible digital experiences for the web.",
   socialLinks = {
