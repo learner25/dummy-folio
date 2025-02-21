@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface RibbonProps {
@@ -29,6 +29,8 @@ const Ribbon = ({ color, index, total }: RibbonProps) => {
     [1, 1.2 + index * 0.1, 1],
   );
 
+  const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+
   return (
     <motion.path
       d={`M0,${50 + index * 100} C300,${50 + index * 100} 700,${50 + index * 100} 1000,${50 + index * 100}`}
@@ -37,16 +39,12 @@ const Ribbon = ({ color, index, total }: RibbonProps) => {
         rotate,
         scale,
         opacity,
+        pathLength,
       }}
       stroke={color}
       strokeWidth={80 - index * 5}
       fill="none"
       initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{
-        pathLength: { duration: 2, ease: "easeInOut" },
-        opacity: { duration: 0.5 },
-      }}
     />
   );
 };
